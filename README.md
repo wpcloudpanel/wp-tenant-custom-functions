@@ -1,13 +1,13 @@
 # wp-tenant-custom-functions
 This plugin is a starter template for your multi-tenant tenant sites.
-Apply it to the your TEMPLATE site and it will be copied to your new tenant sites.
+Apply it to your TEMPLATE site and it will be copied to your new tenant sites.
 
 In it's basic form it offers the following templates for you to follow:
 
 - Replace on-screen terms
 - Remove unnecessary wp-admin dashboard items
 - Add items to the wp-admin area
-- Load up global stylesheets you can modify to apply your own styles
+- Load up global stylesheets you can use to apply your own styles (better than using the customizer since these styles will stick around if you change themes)
 
 # Why Use This?
 Many of the functions in here are present in wp-admin customization plugins.
