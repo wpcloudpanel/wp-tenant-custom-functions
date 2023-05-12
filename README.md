@@ -9,6 +9,11 @@ In it's basic form it offers the following templates for you to follow:
 - Add items to the wp-admin area
 - Load up global stylesheets you can use to apply your own styles (better than using the customizer since these styles will stick around if you change themes)
 
+# How To Use
+You can download the file .zip directly from [this repo](https://github.com/wpcloudpanel/wp-tenant-custom-functions/archive/refs/heads/main.zip)
+After downloading it, remove the "open-saas-tutorial-final-files" folder from the .zip.  If you do not do this WP will throw an error when you try to activate it.
+After removing the folder, just upload the .zip and activate it as you would any other plugin.
+
 # Why Use This?
 Many of the functions in here are present in wp-admin customization plugins.
 However, those plugins are code-heavy and offer dozens, sometimes hundreds of function points.
