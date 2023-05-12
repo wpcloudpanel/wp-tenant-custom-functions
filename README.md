@@ -17,11 +17,11 @@ After downloading it, remove the "open-saas-tutorial-final-files" folder from th
 After removing the folder, just upload the .zip and activate it as you would any other plugin.
 
 # Why Use This?
-Many of the functions in here are present in wp-admin customization plugins.
+Many of the functions in here are present in commercially available wp-admin customization plugins.
 However, those plugins are code-heavy and offer dozens, sometimes hundreds of function points.
-Many of which you do not need.
+Many of which you might not need.
 
-And some of those plugins heavily modify the WP UI.  They look good but many plugins 
+And some of those plugins heavily modify the WP UI.  They look good, but many plugins 
 aren't compatible with them.  So you end up spending tons of time applying custom styles 
 to make existing plugins fit into the new UI framework.
 
