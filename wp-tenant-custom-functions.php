@@ -27,6 +27,14 @@ class WP_Tenant_Custom_Functions_Init {
 			define( 'WPMT_CF_VERSION', $plugin_data['Version'] );
 			define( 'WPMT_CF_TEXTDOMAIN', 'wpcd' );
 			define( 'WPMT_CF_REQUIRES', '5.2.3' );
+			define( 'WPMT_VERSION', $plugin_data['Version'] );
+			
+			// Define a variable that can be used for versioning scripts - required to force multisite to use different version numbers for each site.
+			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+				define( 'WPMT_SCRIPTS_VERSION', (string) time() );
+			} else {
+				define( 'WPMT_SCRIPTS_VERSION', (string) WPMT_VERSION );
+			}			
 		}
 
 		/* Run things after WordPress is loaded */
@@ -38,7 +46,7 @@ class WP_Tenant_Custom_Functions_Init {
 
 		/* Enqueue CSS styles */
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_public_styles' ) );  // For teant site PUBLIC pages.
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_public_styles' ) );  // For tenant site PUBLIC pages.
 		// add_action( 'login_enqueue_scripts', array( $this, 'login_admin_styles' ) );
 
 		/* Remove metaboxes from the admin dashboard */
@@ -83,27 +91,16 @@ class WP_Tenant_Custom_Functions_Init {
 	 */
 	public function enqueue_admin_styles( $hook ) {
 
-		/* Some CSS always gets loaded */
-		$version = 99;
-		if ( defined( 'WPCD_SCRIPTS_VERSION' ) ) {
-			$version = WPCD_SCRIPTS_VERSION;
-		}
-		wp_enqueue_style( 'wp_tenant_custom_functions_admin_styles', plugins_url( 'wp_tenant_custom_functions_admin_styles.css', __FILE__ ), array(), $version );
+		wp_enqueue_style( 'wp_tenant_custom_functions_admin_styles', plugins_url( 'wp_tenant_custom_functions_admin_styles.css', __FILE__ ), array(), WPMT_SCRIPTS_VERSION );
 
 	}
 
 	/**
-	 * Load up CSS scripts into he WPCD PUBLIC pages.
+	 * Load up CSS scripts into the front-end of the tenant site.
 	 */
 	public function enqueue_public_styles() {
 
-		$version = 99;
-		if ( defined( 'WPCD_SCRIPTS_VERSION' ) ) {
-			$version = WPCD_SCRIPTS_VERSION;
-		}
-		if ( WPCD_WORDPRESS_APP_PUBLIC::is_public_page() ) {
-			wp_enqueue_style( 'wp_tenant_custom_functions_public_styles', plugins_url( 'wp_tenant_custom_functions_public_styles.css', __FILE__ ), array(), $version );
-		}
+		wp_enqueue_style( 'wp_tenant_custom_functions_public_styles', plugins_url( 'wp_tenant_custom_functions_public_styles.css', __FILE__ ), array(), WPMT_SCRIPTS_VERSION );
 
 	}
 
